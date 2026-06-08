@@ -333,10 +333,6 @@ h1 {
 }
 
 .section-title-row {
-  display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(150px, 0.35fr) minmax(260px, 0.58fr);
-  gap: clamp(28px, 6vw, 90px);
-  align-items: end;
   margin-bottom: 78px;
 }
 
@@ -349,16 +345,27 @@ h1 {
   line-height: 1.05;
 }
 
-.section-title-row p,
+.section-title-sub {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.35fr) minmax(260px, 1fr);
+  gap: clamp(28px, 6vw, 90px);
+  align-items: start;
+  margin-top: 28px;
+}
+
+.section-title-sub p {
+  color: var(--soft-ink);
+}
+
+.section-title-sub .script-line {
+  color: var(--muted);
+  font-weight: 300;
+}
+
 .work-intro p,
 .belief-copy,
 .begin-inner > p:not(.center-kicker, .script-line) {
   color: var(--soft-ink);
-}
-
-.section-title-row p:nth-child(2) {
-  color: var(--muted);
-  font-weight: 300;
 }
 
 .framework-grid {
@@ -752,11 +759,14 @@ h1 {
 }
 
 @media (max-width: 960px) {
-  .section-title-row,
   .work-intro {
     grid-template-columns: 1fr;
     align-items: start;
     margin-bottom: 54px;
+  }
+
+  .section-title-sub {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -790,7 +800,6 @@ h1 {
 
   .hero-meta,
   .hero-grid,
-  .section-title-row,
   .work-intro,
   .service-grid,
   .site-footer {
@@ -819,7 +828,6 @@ h1 {
     margin-top: 74px;
   }
 
-  .section-title-row,
   .work-intro {
     align-items: start;
     margin-bottom: 54px;
