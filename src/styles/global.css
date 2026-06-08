@@ -159,9 +159,9 @@ h2 {
 
 h1 {
   max-width: 690px;
-  margin-bottom: 28px;
+  margin-bottom: 36px;
   font-size: clamp(4.7rem, 7.4vw, 7.7rem);
-  line-height: 0.98;
+  line-height: 1.08;
 }
 
 .script-line {
