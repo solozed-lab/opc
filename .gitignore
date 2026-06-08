@@ -21,3 +21,6 @@ pnpm-debug.log*
 
 # astro
 .astro/
+
+# browser analysis artifacts
+.playwright-mcp/
