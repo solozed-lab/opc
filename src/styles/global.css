@@ -186,7 +186,7 @@ h1 {
 }
 
 .hero-index {
-  margin-top: 275px;
+  margin-top: clamp(140px, 19vw, 275px);
   color: var(--muted);
   font-size: 0.72rem;
   letter-spacing: 0.08em;
@@ -748,6 +748,15 @@ h1 {
 
   50% {
     transform: scaleX(1);
+  }
+}
+
+@media (max-width: 960px) {
+  .section-title-row,
+  .work-intro {
+    grid-template-columns: 1fr;
+    align-items: start;
+    margin-bottom: 54px;
   }
 }
 
