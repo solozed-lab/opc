@@ -1,0 +1,228 @@
+---
+import "../styles/global.css";
+
+const frameworkCards = [
+  {
+    number: "01",
+    title: "拆解",
+    label: "Dismantle",
+    body: "将混沌的问题、错位的信息、过于庞杂的目标，拆为一组可判断的最小单元。",
+    foot: "Input + Structured",
+    tone: "light",
+  },
+  {
+    number: "02",
+    title: "判断",
+    label: "Judge",
+    body: "在噪音与信号之间分辨，确定什么值得投入，什么只是即时刺激。",
+    foot: "Noise + Signal",
+    tone: "dark",
+  },
+  {
+    number: "03",
+    title: "成事",
+    label: "Complete",
+    body: "把决定变成行动，把行动沉淀为结果。完成比漂亮更重要，但完成也需要秩序。",
+    foot: "Decision + Delivered",
+    tone: "wide",
+  },
+];
+
+const services = [
+  ["01", "战略拆解", "Strategy Dismantling", "拆目标、拆局面、拆阻力与关键约束，把模糊想法拆成可推进的路线。"],
+  ["02", "业务诊断", "Business Diagnosis", "在 2-4 周内识别业务中的高杠杆问题：定位、流量、转化、交付或成本。"],
+  ["03", "决策陪跑", "Decision Coaching", "为创始人、自由职业者和个人品牌主，提供关键节点的判断支持。"],
+  ["04", "AI 工作流落地", "AI Workflow", "把 AI 放进真实工作流程：研究、设计、交付、管理和复盘。"],
+  ["05", "内容结构化", "Content Structuring", "把复杂观点、案例、课程、演讲或服务，整理成可传播的内容系统。"],
+  ["06", "持续迭代", "Iteration", "以小步、低耗、可观察的方式完成一次次交付、复盘、再推进。"],
+];
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="D.J.C，一人公司与 AI 时代的战略拆解、判断与成事陪跑。"
+    />
+    <title>D.J.C | One Person Company</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="logo" href="#top" aria-label="D.J.C home">D.J.C</a>
+      <nav aria-label="页面导航">
+        <a href="#belief">理念</a>
+        <a href="#framework">方法</a>
+        <a href="#work">服务</a>
+        <a href="#contact">联系</a>
+      </nav>
+      <a class="nav-cta" href="#contact">预约一次对话</a>
+    </header>
+
+    <main id="top">
+      <section class="hero section-shell">
+        <div class="hero-meta reveal">
+          <span>One Person Company · AI Era</span>
+          <span>Since 2026 · Built in Shanghai</span>
+        </div>
+
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <h1>AI 时代，<br />值得更加从容</h1>
+            <p class="script-line">Composure in the Age of AI</p>
+            <p class="hero-text">
+              在一人公司里，我帮你把混沌的问题、喧嚣的表象、复杂的时代，
+              拆解成一组可以被判断的变量，并一件一件把重要的工作做成结果。
+            </p>
+            <p class="english-line">Dismantle the problem. Judge the noise. Complete the work.</p>
+          </div>
+
+          <aside class="hero-index reveal" aria-label="页面章节">
+            <p><span>01</span> / 一人公司</p>
+            <p><span>02</span> / AI 时代</p>
+            <p><span>03</span> / 从容</p>
+          </aside>
+        </div>
+
+        <div class="hero-watermark" aria-hidden="true">D.J.C</div>
+        <div class="kinetic-field" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <p class="scroll-note reveal">Scroll · 向下查看方法</p>
+      </section>
+
+      <section id="framework" class="framework section-shell">
+        <p class="section-kicker reveal">02 / The Framework</p>
+        <div class="section-title-row reveal">
+          <h2>拆解 · 判断 · 成事</h2>
+          <p>Dismantle · Judge · Complete</p>
+          <p>不是三种能力，而是三层顺序：拆清楚，判准，然后完成。</p>
+        </div>
+
+        <div class="framework-grid">
+          {
+            frameworkCards.map((card) => (
+              <article class={`framework-card ${card.tone} reveal`}>
+                <span class="card-number">{card.number}</span>
+                <h3>{card.title}</h3>
+                <p class="card-label">{card.label}</p>
+                <p>{card.body}</p>
+                <strong>{card.foot}</strong>
+                {card.tone === "wide" && <span class="card-aura" aria-hidden="true"></span>}
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <section id="work" class="work">
+        <div class="section-shell">
+          <p class="section-kicker reveal">03 / What I Do</p>
+          <div class="work-intro reveal">
+            <h2>我所做的事</h2>
+            <p class="script-line">What I Do</p>
+            <p>不是替你做判断，而是陪你把判断做得更清楚，并把结果变成可持续推进的动作。</p>
+          </div>
+
+          <div class="service-grid">
+            {
+              services.map(([number, title, label, body]) => (
+                <article class="service-card reveal">
+                  <span>{number}</span>
+                  <h3>{title}</h3>
+                  <p class="card-label">{label}</p>
+                  <p>{body}</p>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section id="belief" class="belief section-shell">
+        <p class="center-kicker reveal">04 / A Note on Composure</p>
+        <h2 class="reveal">从容哲学</h2>
+        <p class="script-line reveal">A Note on Composure</p>
+        <div class="belief-copy reveal">
+          <p>AI 让一切加速，也让人更焦虑。它同时给了我们一件罕见的礼物：时间。</p>
+          <p>D.J.C 是一人公司，是一个人，但不是单打独斗。因为我不想成为热闹里的一部分，而想成为在工具变快时仍能看清、能判断、能把事情做成的人。</p>
+          <p>大多数混乱，不是因为资源太少，而是因为重要变量被稀释。拆完之后，问题常常就只剩一种能力：判断，接着让这个更小的问题一步一步被推进。</p>
+          <p>成事不是蛮干。它是因为看见了边界，因为判断足够诚实，也因为愿意把事情做完。</p>
+          <p>所以 AI 时代的理想状态是：不是更快，而是更清楚；不是更多，而是更准。</p>
+        </div>
+        <p class="signature reveal">D.J.C · Shanghai · 二〇二六</p>
+      </section>
+
+      <section id="contact" class="begin">
+        <div class="begin-inner reveal">
+          <p class="center-kicker">05 / Begin</p>
+          <h2>从一次拆解开始</h2>
+          <p class="script-line">Start with a single dismantle</p>
+          <p>
+            一次不超过 30 分钟的对话。说清楚，先不急着选择答案。
+            一起看看：什么是噪音，什么才是正在发生的事。
+          </p>
+          <a class="primary-button" href="mailto:hello@djc.studio">预约一次对话</a>
+          <small>适合一人公司、独立创造者、AI 转型中的经营者。</small>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <strong>D.J.C</strong>
+        <p>Dismantle · Judge · Complete</p>
+        <p>一人公司与 AI 时代的个人战略陪跑。</p>
+      </div>
+      <div>
+        <h4>方法</h4>
+        <a href="#framework">拆解 Dismantle</a>
+        <a href="#framework">判断 Judge</a>
+        <a href="#framework">成事 Complete</a>
+      </div>
+      <div>
+        <h4>联系</h4>
+        <a href="mailto:hello@djc.studio">hello@djc.studio</a>
+        <a href="#contact">微信咨询</a>
+        <a href="#top">X / Twitter</a>
+      </div>
+      <div>
+        <h4>导航</h4>
+        <a href="#belief">理念</a>
+        <a href="#framework">方法</a>
+        <a href="#work">服务</a>
+        <a href="#contact">联系</a>
+      </div>
+      <p class="copyright">© 2026 D.J.C · All rights reserved.</p>
+      <p class="location">Built with composure, in Shanghai.</p>
+    </footer>
+
+    <script>
+      const revealItems = document.querySelectorAll(".reveal");
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (reducedMotion) {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.16 }
+        );
+
+        revealItems.forEach((item) => observer.observe(item));
+      }
+    </script>
+  </body>
+</html>
