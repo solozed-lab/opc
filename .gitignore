@@ -24,3 +24,7 @@ pnpm-debug.log*
 
 # browser analysis artifacts
 .playwright-mcp/
+
+# local design iteration workspace (icon / favicon drafts, etc.)
+.icon-iterations/
+matrix-media-*.png
