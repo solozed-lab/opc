@@ -495,7 +495,7 @@ h1 {
   column-gap: clamp(64px, 12vw, 230px);
   row-gap: 82px;
   max-width: 1080px;
-  margin-left: auto;
+  margin: 0 auto;
 }
 
 .service-card {
@@ -854,7 +854,7 @@ h1 {
   }
 
   .service-grid {
-    margin-left: 0;
+    row-gap: 46px;
   }
 
   .location {
