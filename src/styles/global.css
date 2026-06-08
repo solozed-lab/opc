@@ -404,6 +404,10 @@ h1 {
   color: var(--white);
 }
 
+.framework-card.dark::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+}
+
 .framework-card.wide {
   grid-column: 1 / -1;
   min-height: 310px;
@@ -837,6 +841,10 @@ h1 {
 
   .location {
     text-align: left;
+  }
+
+  .kinetic-field {
+    display: none;
   }
 }
 
