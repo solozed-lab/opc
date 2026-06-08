@@ -877,8 +877,7 @@ h1 {
   }
 
   nav {
-    gap: 14px;
-    font-size: 0.72rem;
+    display: none;
   }
 
   .hero {
