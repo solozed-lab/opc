@@ -6,35 +6,40 @@ const frameworkCards = [
     number: "01",
     title: "拆解",
     label: "Dismantle",
-    body: "问题太大、信息太杂、目标太多——拆成能判断的小块。",
-    foot: "Input + Structured",
-    tone: "light",
+    body: "把混杂的问题拆到能判断、能行动、能验证的颗粒度。",
+    foot: "Input / Structured",
   },
   {
     number: "02",
     title: "判断",
     label: "Judge",
-    body: "在噪音与信号之间分辨，确定什么值得投入，什么只是即时刺激。",
-    foot: "Noise + Signal",
-    tone: "dark",
+    body: "在信息噪音中识别边界、代价、优先级和真正的信号。",
+    foot: "Noise / Signal",
+    featured: true,
   },
   {
     number: "03",
     title: "成事",
     label: "Complete",
-    body: "把决定变成行动，把行动沉淀为结果。完成比漂亮更重要，但完成也需要秩序。",
-    foot: "Decision + Delivered",
-    tone: "wide",
+    body: "把判断变成路径，把路径变成结果，让复杂的事稳定落地。",
+    foot: "Decision / Delivered",
   },
 ];
 
 const services = [
-  ["01", "拆方向", "Find the Blocker", "你有个大方向但推不动，一起找到卡点在哪。"],
-  ["02", "找问题", "Spot the Real Problem", "2-4 周，搞清楚你业务里最值得先解决的事。"],
-  ["03", "陪你判断", "Judge Together", "关键节点上，一起把噪音和信号分开。"],
-  ["04", "AI 接进工作", "AI in Your Workflow", "研究、设计、交付、复盘，把 AI 真正用进去。"],
-  ["05", "内容整理", "Structure Your Content", "复杂的东西整理成能传播的结构。"],
-  ["06", "小步推进", "Step by Step", "做一步，看一步，再推进一步。"],
+  ["01", "战略拆解", "Strategy Dismantle", "把目标、约束、资源和卡点拆清楚，找到真正值得先做的事。"],
+  ["02", "业务诊断", "Business Diagnosis", "用 2-4 周看清业务里的关键变量，减少盲目投入。"],
+  ["03", "决策陪跑", "Decision Partner", "在关键节点一起判断噪音、信号、风险和下一步。"],
+  ["04", "AI 工作流落地", "AI Workflow", "把 AI 接进研究、设计、交付与复盘，而不是停在工具尝鲜。"],
+  ["05", "内容结构化", "Content System", "把复杂内容整理成能传播、能复用、能持续迭代的结构。"],
+  ["06", "持续迭代", "Continuous Iteration", "做一步，看一步，把结果反馈进下一轮判断。"],
+];
+
+const proofPoints = [
+  "OPC",
+  "AI ERA",
+  "SHANGHAI",
+  "DISMANTLE / JUDGE / COMPLETE",
 ];
 ---
 
@@ -43,12 +48,10 @@ const services = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/djc-icon-noir-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/djc-icon-noir-180.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#f6f5f2" />
+    <meta name="theme-color" content="#090807" />
     <meta
       name="description"
       content="D.J.C，AI 时代的一人公司方法论：拆解问题，判断方向，把事做成。"
@@ -64,63 +67,72 @@ const services = [
         <a href="#work">服务</a>
         <a href="#contact">联系</a>
       </nav>
-      <a class="nav-cta" href="#contact">预约一次对话</a>
+      <button class="nav-cta contact-trigger" type="button">开启一次对话</button>
     </header>
 
     <main id="top">
-      <section class="hero section-shell">
-        <div class="hero-meta reveal">
-          <span>One Person Company · AI Era</span>
-          <span>Since 2026 · Built in Shanghai</span>
-        </div>
+      <section class="hero">
+        <img
+          class="hero-image"
+          src="/images/djc-noir-door.png"
+          alt="黑色空间里一道门缝透出金色光线"
+        />
+        <div class="hero-shade" aria-hidden="true"></div>
 
-        <div class="hero-grid">
-          <div class="hero-copy reveal">
-            <h1>AI 时代，<br />值得更加从容</h1>
-            <p class="script-line">Composure in the Age of AI</p>
-            <p class="hero-text">
-              AI 时代缺的不是工具，是判断力。把问题拆清楚，方向判准，事情自然就成了。
-            </p>
-            <p class="english-line">Dismantle the problem. Judge the direction. The rest follows.</p>
+        <div class="hero-inner">
+          <p class="eyebrow reveal">One Person Company / AI Era</p>
+          <div class="hero-grid">
+            <div class="hero-copy reveal">
+              <h1 class="type-title">
+                <span class="type-line type-line-1">AI 时代，</span><br />
+                <span class="type-line type-line-2">值得更加<span class="accent">从容</span></span>
+              </h1>
+              <p class="script-line">Composer in the Age of AI</p>
+              <p class="hero-text">
+                在信息噪音中，保持清醒判断；在复杂世界里，完成真正重要的事。
+              </p>
+              <p class="english-line">
+                Dismantle the problem. Judge the noise. Complete the work.
+              </p>
+              <div class="hero-actions">
+                <button class="primary-button contact-trigger" type="button">开启一次对话</button>
+                <a class="ghost-button" href="#framework">了解方法论</a>
+              </div>
+            </div>
+
+            <aside class="hero-index reveal" aria-label="D.J.C 元信息">
+              <p><span class="rolling-number" data-target="31.2304">31.2304</span>° N</p>
+              <p><span class="rolling-number" data-target="121.4737">121.4737</span>° E</p>
+              <p>Shanghai</p>
+              <p>Est. 2026</p>
+            </aside>
           </div>
 
-          <aside class="hero-index reveal" aria-label="页面章节">
-            <p><span>01</span> / 一人公司</p>
-            <p><span>02</span> / AI 时代</p>
-            <p><span>03</span> / 从容</p>
-          </aside>
+          <div class="proof-strip reveal" aria-label="页面关键词">
+            {proofPoints.map((item) => <span>{item}</span>)}
+          </div>
         </div>
-
-        <div class="hero-watermark" aria-hidden="true">D.J.C</div>
-        <div class="kinetic-field" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <p class="scroll-note reveal">Scroll · 向下查看方法</p>
       </section>
 
       <section id="framework" class="framework section-shell">
-        <p class="section-kicker reveal">02 / The Framework</p>
+        <p class="section-kicker reveal">01 / The Framework</p>
         <div class="section-title-row reveal">
           <h2>拆解 · 判断 · 成事</h2>
           <div class="section-title-sub">
             <p class="script-line">Dismantle · Judge · Complete</p>
-            <p>不是三种能力，而是三层顺序：拆清楚，判准，然后完成。</p>
+            <p>不是三件独立的事，而是一套从混乱到结果的顺序。</p>
           </div>
         </div>
 
         <div class="framework-grid">
           {
             frameworkCards.map((card) => (
-              <article class={`framework-card ${card.tone} reveal`}>
+              <article class:list={["framework-card", "reveal", { featured: card.featured }]}>
                 <span class="card-number">{card.number}</span>
                 <h3>{card.title}</h3>
                 <p class="card-label">{card.label}</p>
                 <p>{card.body}</p>
                 <strong>{card.foot}</strong>
-                {card.tone === "wide" && <span class="card-aura" aria-hidden="true"></span>}
               </article>
             ))
           }
@@ -129,11 +141,12 @@ const services = [
 
       <section id="work" class="work">
         <div class="section-shell">
-          <p class="section-kicker reveal">03 / What I Do</p>
+          <p class="section-kicker reveal">02 / What I Do</p>
           <div class="work-intro reveal">
             <h2>我所做的事</h2>
-            <p class="script-line">What I Do</p>
-            <p>不是替你做判断，而是陪你把判断做得更清楚，并把结果变成可持续推进的动作。</p>
+            <p>
+              为一人公司与创造者，提供从战略到落地的一体化支持：先看清，再推进。
+            </p>
           </div>
 
           <div class="service-grid">
@@ -141,8 +154,10 @@ const services = [
               services.map(([number, title, label, body]) => (
                 <article class="service-card reveal">
                   <span>{number}</span>
-                  <h3>{title}</h3>
-                  <p class="card-label">{label}</p>
+                  <div>
+                    <h3>{title}</h3>
+                    <p class="card-label">{label}</p>
+                  </div>
                   <p>{body}</p>
                 </article>
               ))
@@ -151,30 +166,33 @@ const services = [
         </div>
       </section>
 
-      <section id="belief" class="belief section-shell">
-        <p class="center-kicker reveal">04 / A Note on Composure</p>
-        <h2 class="reveal">从容哲学</h2>
-        <p class="script-line reveal">A Note on Composure</p>
+      <section id="belief" class="belief">
         <div class="belief-copy reveal">
-          <p>AI 让一切加速，也让人更焦虑。它同时给了我们一件罕见的礼物：时间。</p>
-          <p>D.J.C 是一人公司，是一个人，但不是单打独斗。因为我不想成为热闹里的一部分，而想成为在工具变快时仍能看清、能判断、能把事情做成的人。</p>
-          <p>大多数混乱，不是因为资源太少，而是因为重要变量被稀释。拆完之后，问题常常就只剩一种能力：判断，接着让这个更小的问题一步一步被推进。</p>
-          <p>成事不是蛮干。看清边界，诚实判断，然后把它做完。</p>
-          <p>所以 AI 时代的理想状态是：不是更快，而是更清楚；不是更多，而是更准。</p>
+          <p class="section-kicker">03 / A Note on Composure</p>
+          <h2>从容哲学</h2>
+          <p class="script-line">A Note on Composure</p>
+          <div class="belief-text">
+            <p>AI 让一切加速，也让人更焦虑。它同时给了我们一件罕见的礼物：时间。</p>
+            <p>D.J.C 是一人公司，是一个人，但不是单打独斗。因为我不想成为热闹里的一部分，而想成为在工具变快时仍能看清、能判断、能把事情做成的人。</p>
+            <p>大多数混乱，不是因为资源太少，而是因为重要变量被稀释。拆完之后，问题常常就只剩一种能力：判断，接着让这个更小的问题一步一步被推进。</p>
+            <p><strong>不做更多的事，只做最重要的事。不追逐每个机会，只保持独立、清醒、长期主义。</strong></p>
+          </div>
         </div>
-        <p class="signature reveal">D.J.C · Shanghai · 二〇二六</p>
+        <figure class="belief-image reveal">
+          <img src="/images/djc-noir-stairs.png" alt="暗色台阶通向一道发光的门" />
+        </figure>
       </section>
 
       <section id="contact" class="begin">
         <div class="begin-inner reveal">
-          <p class="center-kicker">05 / Begin</p>
+          <p class="center-kicker">04 / Begin</p>
           <h2>从一次拆解开始</h2>
           <p class="script-line">Start with a single dismantle</p>
           <p>
-            一次不超过 30 分钟的对话。说清楚，先不急着选择答案。
-            一起看看：什么是噪音，什么才是正在发生的事。
+            一次不超过 30 分钟的对话。先不急着选择答案，一起看看：
+            什么是噪音，什么才是正在发生的事。
           </p>
-          <a class="primary-button" href="mailto:hello@djc.studio">预约一次对话</a>
+          <button class="primary-button light contact-trigger" type="button">开启一次对话</button>
           <small>适合一人公司、独立创造者、AI 转型中的经营者。</small>
         </div>
       </section>
@@ -193,29 +211,125 @@ const services = [
         <a href="#framework">成事 Complete</a>
       </div>
       <div>
-        <h4>联系</h4>
-        <a href="mailto:hello@djc.studio">hello@djc.studio</a>
-        <a href="#contact">微信咨询</a>
-        <a href="#top">X / Twitter</a>
+        <h4>服务</h4>
+        <a href="#work">战略拆解</a>
+        <a href="#work">业务诊断</a>
+        <a href="#work">AI 工作流落地</a>
       </div>
       <div>
-        <h4>导航</h4>
-        <a href="#belief">理念</a>
-        <a href="#framework">方法</a>
-        <a href="#work">服务</a>
-        <a href="#contact">联系</a>
+        <h4>联系</h4>
+        <a href="mailto:i@solozed.com">i@solozed.com</a>
+        <a href="https://x.com/XianlaiSolo" target="_blank" rel="noreferrer">X / @XianlaiSolo</a>
+        <a href="#contact">WeChat / aptx9089</a>
       </div>
       <p class="copyright">© 2026 D.J.C · All rights reserved.</p>
-      <p class="location">Built with composure, in Shanghai.</p>
+      <p class="location">Built with clarity and discipline.</p>
     </footer>
+
+    <dialog class="contact-dialog" aria-labelledby="contact-dialog-title">
+      <div class="dialog-head">
+        <div>
+          <p class="section-kicker">Begin</p>
+          <h2 id="contact-dialog-title">选择一种方式</h2>
+        </div>
+        <button class="dialog-close" type="button" aria-label="关闭联系弹窗">×</button>
+      </div>
+
+      <div class="dialog-options">
+        <a class="dialog-option" href="mailto:i@solozed.com">
+          <span>Email</span>
+          <strong>i@solozed.com</strong>
+        </a>
+        <a class="dialog-option" href="https://x.com/XianlaiSolo" target="_blank" rel="noreferrer">
+          <span>X</span>
+          <strong>@XianlaiSolo</strong>
+        </a>
+        <button class="dialog-option wechat-toggle" type="button" aria-expanded="false" aria-controls="wechat-contact">
+          <span>WeChat</span>
+          <strong>aptx9089</strong>
+        </button>
+      </div>
+
+      <div id="wechat-contact" class="wechat-contact" hidden>
+        <img src="/images/wechat-user-noir.png" alt="微信二维码，扫码添加 aptx9089" />
+        <p>微信号：<strong>aptx9089</strong></p>
+      </div>
+    </dialog>
 
     <script>
       const revealItems = document.querySelectorAll(".reveal");
+      const header = document.querySelector(".site-header");
+      const contactDialog = document.querySelector(".contact-dialog");
+      const contactTriggers = document.querySelectorAll(".contact-trigger");
+      const dialogClose = document.querySelector(".dialog-close");
+      const wechatToggle = document.querySelector(".wechat-toggle");
+      const wechatContact = document.querySelector("#wechat-contact");
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const setHeaderState = () => {
+        header?.classList.toggle("is-scrolled", window.scrollY > 24);
+      };
+
+      setHeaderState();
+      window.addEventListener("scroll", setHeaderState, { passive: true });
+
+      contactTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+          if (typeof contactDialog?.showModal === "function") {
+            contactDialog.showModal();
+          }
+        });
+      });
+
+      dialogClose?.addEventListener("click", () => contactDialog?.close());
+
+      contactDialog?.addEventListener("click", (event) => {
+        if (event.target === contactDialog) {
+          contactDialog.close();
+        }
+      });
+
+      wechatToggle?.addEventListener("click", () => {
+        const isOpen = wechatToggle.getAttribute("aria-expanded") === "true";
+        wechatToggle.setAttribute("aria-expanded", String(!isOpen));
+        wechatContact.hidden = isOpen;
+      });
+
+      const animateCoordinates = () => {
+        const coordinateItems = document.querySelectorAll(".rolling-number");
+
+        coordinateItems.forEach((item, index) => {
+          const target = Number(item.dataset.target);
+          const start = target - (index === 0 ? 1.8647 : 2.3914);
+          const duration = 1400 + index * 220;
+          const startTime = performance.now();
+
+          const tick = (now) => {
+            const progress = Math.min((now - startTime) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 4);
+            const value = start + (target - start) * eased;
+
+            item.textContent = value.toFixed(4);
+
+            if (progress < 1) {
+              requestAnimationFrame(tick);
+            } else {
+              item.textContent = target.toFixed(4);
+            }
+          };
+
+          requestAnimationFrame(tick);
+        });
+      };
 
       if (reducedMotion) {
         revealItems.forEach((item) => item.classList.add("is-visible"));
+        document.querySelectorAll(".rolling-number").forEach((item) => {
+          item.textContent = Number(item.dataset.target).toFixed(4);
+        });
       } else {
+        animateCoordinates();
+
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
