@@ -28,3 +28,8 @@ pnpm-debug.log*
 # local design iteration workspace (icon / favicon drafts, etc.)
 .icon-iterations/
 matrix-media-*.png
+
+# tool artifacts
+.mavis/
+.opencode/
+.superpowers/
