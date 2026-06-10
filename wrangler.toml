@@ -1,0 +1,4 @@
+name = "opc"
+compatibility_date = "2024-01-01"
+# Disable automatic KV namespace provisioning
+kv_namespaces = []
