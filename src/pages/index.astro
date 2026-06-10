@@ -1,6 +1,12 @@
 ---
 import "../styles/global.css";
 
+const siteUrl = "https://opc.solozed.com/";
+const siteTitle = "D.J.C | AI 时代的一人公司方法论";
+const siteDescription =
+  "D.J.C，AI 时代的一人公司方法论：拆解（Dismantle）、判断（Judge）、成事（Complete）。面向独立创造者与 AI 转型经营者，提供从战略到落地的一体化陪跑。";
+const ogImage = new URL("/images/djc-noir-door.png", siteUrl).toString();
+
 const frameworkCards = [
   {
     number: "01",
@@ -36,12 +42,98 @@ const services = [
 ];
 
 const proofPoints = [
- "OPC",
- "AI ERA",
- "SHANGHAI",
- "COMPOSING STILL",
- "DISMANTLE / JUDGE / COMPLETE",
+  "OPC",
+  "AI ERA",
+  "SHANGHAI",
+  "COMPOSING STILL",
+  "DISMANTLE / JUDGE / COMPLETE",
 ];
+
+const faqs = [
+  {
+    question: "什么是 D.J.C？",
+    answer:
+      "D.J.C 是一人公司方法论的实践品牌，核心方法是 Dismantle（拆解）、Judge（判断）、Complete（成事）三步法，把复杂问题拆到颗粒度，在信息噪音中做判断，把事稳定做成。",
+  },
+  {
+    question: "D.J.C 提供哪些服务？",
+    answer:
+      "D.J.C 提供战略拆解、业务诊断、决策陪跑、AI 工作流落地、内容结构化和持续迭代支持。",
+  },
+  {
+    question: "一次咨询的流程是怎样的？",
+    answer:
+      "从一次不超过 30 分钟的对话开始，先看清什么是噪音、什么是正在发生的事，再决定是否进入 2-4 周的深度陪跑。",
+  },
+  {
+    question: "适合谁？",
+    answer:
+      "适合一人公司创始人、独立创造者，以及正在把 AI 接进研究、设计、交付与复盘环节的经营者。",
+  },
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}#person`,
+      name: "D.J.C",
+      alternateName: "Dismantle Judge Complete",
+      description:
+        "AI 时代的一人公司方法论。拆解（Dismantle）、判断（Judge）、成事（Complete）三步法，面向独立创造者与 AI 转型经营者，提供从战略到落地的一体化陪跑。",
+      url: siteUrl,
+      jobTitle: "One Person Company",
+      knowsAbout: ["AI 工作流落地", "独立创造者战略", "业务诊断", "决策陪跑", "内容结构化", "长期主义"],
+      workLocation: {
+        "@type": "Place",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Shanghai",
+          addressCountry: "CN",
+        },
+      },
+      sameAs: ["https://x.com/XianlaiSolo"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}#website`,
+      url: siteUrl,
+      name: "D.J.C",
+      description: siteDescription,
+      inLanguage: "zh-CN",
+      publisher: {
+        "@id": `${siteUrl}#person`,
+      },
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${siteUrl}#webpage`,
+      url: siteUrl,
+      name: siteTitle,
+      description: siteDescription,
+      isPartOf: {
+        "@id": `${siteUrl}#website`,
+      },
+      about: {
+        "@id": `${siteUrl}#person`,
+      },
+      inLanguage: "zh-CN",
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${siteUrl}#faq`,
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -53,68 +145,30 @@ const proofPoints = [
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/djc-icon-noir-180.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#090807" />
-    <meta
- name="description"
- content="D.J.C，AI时代的一人公司方法论：拆解（Dismantle）、判断（Judge）、成事（Complete）。面向独立创造者与 AI转型经营者，提供从战略到落地的一体化陪跑。"
- />
- <meta name="author" content="D.J.C" />
- <link rel="canonical" href="https://opc.solozed.com/" />
+    <meta name="description" content={siteDescription} />
+    <meta name="author" content="D.J.C" />
+    <link rel="canonical" href={siteUrl} />
+    <title>{siteTitle}</title>
 
- <meta property="og:type" content="website" />
- <meta property="og:site_name" content="D.J.C" />
- <meta property="og:title" content="D.J.C | AI时代的一人公司方法论" />
- <meta
- property="og:description"
- content="拆解问题，判断方向，把事做成。Dismantle · Judge · Complete。面向独立创造者与 AI转型经营者。"
- />
- <meta property="og:url" content="https://opc.solozed.com/" />
- <meta
- property="og:image"
- content="https://opc.solozed.com/images/djc-noir-door.png"
- />
- <meta property="og:image:alt" content="黑色空间里一道门缝透出金色光线" />
- <meta property="og:locale" content="zh_CN" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="D.J.C" />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={siteDescription} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1672" />
+    <meta property="og:image:height" content="941" />
+    <meta property="og:image:alt" content="黑色空间里一道门缝透出金色光线" />
+    <meta property="og:locale" content="zh_CN" />
 
- <meta name="twitter:card" content="summary_large_image" />
- <meta name="twitter:title" content="D.J.C | AI时代的一人公司方法论" />
- <meta
- name="twitter:description"
- content="拆解问题，判断方向，把事做成。Dismantle · Judge · Complete。"
- />
- <meta
- name="twitter:image"
- content="https://opc.solozed.com/images/djc-noir-door.png"
- />
- <meta name="twitter:image:alt" content="黑色空间里一道门缝透出金色光线" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={siteDescription} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="黑色空间里一道门缝透出金色光线" />
 
- <script type="application/ld+json" set:html={JSON.stringify({
- "@context": "https://schema.org",
- "@type": "Person",
- "@id": "https://opc.solozed.com/#person",
- "name": "D.J.C",
- "alternateName": "Dismantle Judge Complete",
- "description": "AI时代的一人公司方法论。拆解（Dismantle）、判断（Judge）、成事（Complete）三步法，面向独立创造者与 AI转型经营者，提供从战略到落地的一体化陪跑。",
- "url": "https://opc.solozed.com/",
- "jobTitle": "One Person Company",
- "knowsAbout": [
- "AI 工作流落地",
- "独立创造者战略",
- "业务诊断",
- "决策陪跑",
- "内容结构化",
- "长期主义"
- ],
- "workLocation": {
- "@type": "Place",
- "address": {
- "@type": "PostalAddress",
- "addressLocality": "Shanghai",
- "addressCountry": "CN"
- }
- },
- "sameAs": ["https://x.com/XianlaiSolo"]
- })} />
- </head>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
   <body>
     <header class="site-header">
       <a class="logo" href="#top" aria-label="D.J.C home">D.J.C</a>
@@ -265,6 +319,26 @@ const proofPoints = [
           <small>适合一人公司、独立创造者、AI 转型中的经营者。</small>
         </div>
       </section>
+
+      <section id="faq" class="faq section-shell">
+        <p class="section-kicker reveal">05 / Questions</p>
+        <div class="faq-layout">
+          <div class="faq-intro reveal">
+            <h2>常见问题</h2>
+            <p class="script-line">What search engines and people should know</p>
+          </div>
+          <div class="faq-list">
+            {
+              faqs.map((faq) => (
+                <article class="faq-item reveal">
+                  <h3>{faq.question}</h3>
+                  <p>{faq.answer}</p>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -295,23 +369,7 @@ const proofPoints = [
       <p class="location">Built with clarity and discipline.</p>
     </footer>
 
-    
- <section class="sr-only" aria-label="关于 D.J.C 的常见问题">
- <h2>关于 D.J.C</h2>
- <dl>
- <dt>什么是 D.J.C？</dt>
- <dd>D.J.C 是一人公司方法论的实践品牌，核心方法是 Dismantle（拆解）、Judge（判断）、Complete（成事）三步法，把复杂问题拆到颗粒度，在信息噪音中做判断，把事稳定做成。</dd>
- <dt>D.J.C 提供哪些服务？</dt>
- <dd>六类服务：战略拆解（Strategy Dismantle）、业务诊断（Business Diagnosis）、决策陪跑（Decision Partner）、AI 工作流落地（AI Workflow）、内容结构化（Content System）、持续迭代（Continuous Iteration）。</dd>
- <dt>一次咨询的流程是怎样的？</dt>
- <dd>从一次不超过30 分钟的对话开始，先不急着选答案，一起看清什么是噪音、什么是正在发生的事，再决定是否进入2-4 周的深度陪跑。</dd>
- <dt>适合谁？</dt>
- <dd>一人公司创始人、独立创造者，以及正在把 AI 接进研究、设计、交付与复盘环节的经营者。</dd>
- <dt>在哪里？</dt>
- <dd>上海，中国。</dd>
- </dl>
- </section>
-<dialog class="contact-dialog" aria-labelledby="contact-dialog-title">
+    <dialog class="contact-dialog" aria-labelledby="contact-dialog-title">
       <div class="dialog-head">
         <div>
           <p class="section-kicker">Begin</p>
