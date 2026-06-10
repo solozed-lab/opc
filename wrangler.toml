@@ -2,3 +2,6 @@ name = "opc"
 compatibility_date = "2026-06-10"
 # Disable automatic KV namespace provisioning
 kv_namespaces = []
+
+[assets]
+directory = "./dist"
