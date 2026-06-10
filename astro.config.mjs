@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://opc.example.com",
+  site: "https://opc.solozed.com",
 });
