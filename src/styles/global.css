@@ -123,15 +123,17 @@ nav a:hover,
 .nav-cta,
 .primary-button,
 .ghost-button {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 44px;
   border-radius: 999px;
   padding: 0 22px;
+  overflow: hidden;
   font-size: 0.82rem;
   font-weight: 800;
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
 }
 
 .nav-cta {
@@ -145,6 +147,20 @@ nav a:hover,
   background: linear-gradient(135deg, #e5c883, #b88643);
   color: #120f0b;
   box-shadow: 0 20px 48px rgba(196, 154, 85, 0.22);
+}
+
+.primary-button::after {
+  position: absolute;
+  inset: -42% -28%;
+  background: linear-gradient(105deg, transparent 0 42%, rgba(255, 249, 226, 0.56) 50%, transparent 58% 100%);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-78%) rotate(4deg);
+}
+
+.hero-copy.is-visible .primary-button::after {
+  animation: ctaQuietGlint 1600ms cubic-bezier(0.16, 1, 0.3, 1) 2300ms both;
 }
 
 .primary-button.light {
@@ -164,6 +180,12 @@ nav a:hover,
   transform: translateY(-2px);
 }
 
+.primary-button:hover {
+  box-shadow:
+    0 18px 42px rgba(196, 154, 85, 0.26),
+    inset 0 0 18px rgba(255, 249, 226, 0.18);
+}
+
 .section-shell {
   position: relative;
   width: min(100% - 88px, var(--max));
@@ -178,13 +200,14 @@ nav a:hover,
   color: var(--white);
 }
 
-.hero-image,
+.hero-video,
 .hero-shade {
   position: absolute;
   inset: 0;
 }
 
-.hero-image {
+.hero-video {
+  z-index: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -193,6 +216,7 @@ nav a:hover,
 }
 
 .hero-shade {
+  z-index: 1;
   background:
     linear-gradient(90deg, rgba(8, 7, 6, 0.96) 0%, rgba(8, 7, 6, 0.76) 38%, rgba(8, 7, 6, 0.22) 70%, rgba(8, 7, 6, 0.72) 100%),
     linear-gradient(180deg, rgba(8, 7, 6, 0.28) 0%, rgba(8, 7, 6, 0.06) 54%, rgba(8, 7, 6, 0.92) 100%);
@@ -244,13 +268,14 @@ h1 {
   margin-bottom: 24px;
   font-size: clamp(4.5rem, 7.8vw, 8.8rem);
   line-height: 1.04;
+  text-wrap: balance;
 }
 
 h1 .type-line {
   display: inline-block;
-  max-width: 0;
-  border-right: 2px solid transparent;
-  overflow: hidden;
+  filter: blur(7px);
+  opacity: 0;
+  transform: translateY(22px);
   white-space: nowrap;
   vertical-align: top;
 }
@@ -258,38 +283,24 @@ h1 .type-line {
 h1 .accent {
   position: relative;
   display: inline-block;
-  color: var(--gold-light);
+  color: rgba(255, 249, 239, 0.9);
   text-shadow: 0 0 0 rgba(227, 198, 132, 0);
 }
 
 h1 .accent::after {
-  position: absolute;
-  inset: 6% -18% 0 -18%;
-  background: linear-gradient(105deg, transparent 0 34%, rgba(255, 249, 239, 0.92) 48%, transparent 62% 100%);
-  content: "";
-  mix-blend-mode: screen;
-  opacity: 0;
-  transform: translateX(-120%);
+  content: none;
 }
 
 .hero-copy.is-visible .type-line-1 {
-  animation:
-    typeLineOne 760ms steps(6, end) 120ms forwards,
-    titleCaret 900ms step-end 120ms 1;
+  animation: titleResolve 980ms cubic-bezier(0.16, 1, 0.3, 1) 120ms forwards;
 }
 
 .hero-copy.is-visible .type-line-2 {
-  animation:
-    typeLineTwo 980ms steps(6, end) 920ms forwards,
-    titleCaret 1100ms step-end 920ms 1;
+  animation: titleResolve 1040ms cubic-bezier(0.16, 1, 0.3, 1) 420ms forwards;
 }
 
 .hero-copy.is-visible h1 .accent {
-  animation: composureGlow 1300ms ease 1850ms both;
-}
-
-.hero-copy.is-visible h1 .accent::after {
-  animation: composureSweep 900ms ease 1900ms both;
+  animation: composureGlow 1800ms cubic-bezier(0.16, 1, 0.3, 1) 980ms both;
 }
 
 .script-line {
@@ -342,25 +353,100 @@ h1 .accent::after {
 }
 
 .proof-strip {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0;
   margin-top: 86px;
-  border-top: 1px solid rgba(255, 247, 226, 0.12);
-  border-bottom: 1px solid rgba(255, 247, 226, 0.12);
+}
+
+.proof-strip::before,
+.proof-strip::after {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 247, 226, 0.12);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.proof-strip::before {
+  top: 0;
+}
+
+.proof-strip::after {
+  bottom: 0;
+}
+
+.proof-strip.is-visible::before {
+  animation: proofLineDraw 980ms cubic-bezier(0.16, 1, 0.3, 1) 120ms forwards;
+}
+
+.proof-strip.is-visible::after {
+  animation: proofLineDraw 980ms cubic-bezier(0.16, 1, 0.3, 1) 260ms forwards;
 }
 
 .proof-strip span {
+  position: relative;
   min-height: 58px;
-  border-right: 1px solid rgba(255, 247, 226, 0.12);
   padding: 18px 22px;
   color: rgba(255, 249, 239, 0.56);
   font-size: 0.75rem;
   letter-spacing: 0.12em;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 560ms cubic-bezier(0.16, 1, 0.3, 1), transform 560ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.proof-strip span:last-child {
-  border-right: 0;
+.proof-strip span:not(:last-child)::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 247, 226, 0.12);
+  content: "";
+  transform: scaleY(0);
+  transform-origin: top center;
+}
+
+.proof-strip.is-visible span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.proof-strip.is-visible span::after {
+  animation: proofDividerDraw 620ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.proof-strip.is-visible span:nth-child(1) {
+  transition-delay: 360ms;
+}
+
+.proof-strip.is-visible span:nth-child(2) {
+  transition-delay: 440ms;
+}
+
+.proof-strip.is-visible span:nth-child(3) {
+  transition-delay: 520ms;
+}
+
+.proof-strip.is-visible span:nth-child(4) {
+  transition-delay: 600ms;
+}
+
+.proof-strip.is-visible span:nth-child(1)::after {
+  animation-delay: 420ms;
+}
+
+.proof-strip.is-visible span:nth-child(2)::after {
+  animation-delay: 500ms;
+}
+
+.proof-strip.is-visible span:nth-child(3)::after {
+  animation-delay: 580ms;
 }
 
 .framework {
@@ -878,73 +964,72 @@ h1 .accent::after {
   transition-delay: 150ms;
 }
 
-@keyframes typeLineOne {
+@keyframes titleResolve {
   from {
-    max-width: 0;
+    filter: blur(7px);
+    opacity: 0;
+    transform: translateY(22px);
   }
 
   to {
-    max-width: 7.4ch;
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes typeLineTwo {
+@keyframes proofLineDraw {
   from {
-    max-width: 0;
+    transform: scaleX(0);
   }
 
   to {
-    max-width: 7em;
+    transform: scaleX(1);
   }
 }
 
-@keyframes titleCaret {
-  0%,
-  34%,
-  68% {
-    border-right-color: var(--gold-light);
+@keyframes proofDividerDraw {
+  from {
+    transform: scaleY(0);
   }
 
-  17%,
-  51%,
-  85%,
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes ctaQuietGlint {
+  0% {
+    opacity: 0;
+    transform: translateX(-78%) rotate(4deg);
+  }
+
+  36% {
+    opacity: 0.42;
+  }
+
   100% {
-    border-right-color: transparent;
+    opacity: 0;
+    transform: translateX(78%) rotate(4deg);
   }
 }
 
 @keyframes composureGlow {
   0% {
-    color: var(--white);
+    color: rgba(255, 249, 239, 0.9);
     text-shadow: 0 0 0 rgba(227, 198, 132, 0);
   }
 
-  42% {
+  48% {
     color: #fff3c9;
     text-shadow:
-      0 0 16px rgba(227, 198, 132, 0.42),
-      0 0 46px rgba(196, 154, 85, 0.34);
+      0 0 14px rgba(227, 198, 132, 0.32),
+      0 0 42px rgba(196, 154, 85, 0.26);
   }
 
   100% {
     color: var(--gold-light);
     text-shadow: 0 0 22px rgba(196, 154, 85, 0.18);
-  }
-}
-
-@keyframes composureSweep {
-  0% {
-    opacity: 0;
-    transform: translateX(-120%);
-  }
-
-  30% {
-    opacity: 0.95;
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateX(120%);
   }
 }
 
@@ -1015,6 +1100,10 @@ h1 .accent::after {
     border-right: 0;
   }
 
+  .proof-strip span:nth-child(2)::after {
+    content: none;
+  }
+
   .framework,
   .work,
   .faq {
@@ -1059,9 +1148,9 @@ h1 .accent::after {
     display: none;
   }
 
-  .hero-image {
-    object-position: 68% 50%;
-    opacity: 0.68;
+  .hero-video {
+    object-position: 72% 50%;
+    opacity: 0.74;
   }
 
   .hero-shade {
@@ -1109,6 +1198,10 @@ h1 .accent::after {
   .proof-strip span:nth-child(2) {
     border-right: 0;
     border-bottom: 1px solid rgba(255, 247, 226, 0.12);
+  }
+
+  .proof-strip span::after {
+    content: none !important;
   }
 
   .section-title-row h2,
@@ -1181,9 +1274,14 @@ h1 .accent::after {
     transform: none;
   }
 
+  .primary-button::after {
+    content: none;
+  }
+
   h1 .type-line {
-    max-width: none;
-    border-right-color: transparent;
+    filter: none;
+    opacity: 1;
+    transform: none;
   }
 
   h1 .accent,

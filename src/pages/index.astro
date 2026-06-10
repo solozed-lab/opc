@@ -45,7 +45,6 @@ const proofPoints = [
   "OPC",
   "AI ERA",
   "SHANGHAI",
-  "COMPOSING STILL",
   "DISMANTLE / JUDGE / COMPLETE",
 ];
 
@@ -183,16 +182,19 @@ const structuredData = {
 
     <main id="top">
       <section class="hero">
- <img
- class="hero-image"
- src="/images/djc-noir-door.png"
- alt="黑色空间里一道门缝透出金色光线"
- width="1672"
- height="941"
- loading="eager"
- decoding="async"
- fetchpriority="high"
- />
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          poster="/images/djc-noir-door.png"
+          aria-hidden="true"
+        >
+          <source src="/videos/djc-door-light-loop.webm" type="video/webm" />
+          <source src="/videos/djc-door-light-loop.mp4" type="video/mp4" />
+        </video>
         <div class="hero-shade" aria-hidden="true"></div>
 
         <div class="hero-inner">
@@ -466,6 +468,11 @@ const structuredData = {
       };
 
       if (reducedMotion) {
+        document.querySelectorAll("video").forEach((video) => {
+          video.pause();
+          video.currentTime = 0;
+        });
+
         revealItems.forEach((item) => item.classList.add("is-visible"));
         document.querySelectorAll(".rolling-number").forEach((item) => {
           item.textContent = Number(item.dataset.target).toFixed(4);
